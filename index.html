@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크로스핏 WOD 생성기</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <h1>크로스핏 WOD 생성기</h1>
+        <select id="workoutType">
+            <option value="AMRAP">AMRAP</option>
+            <option value="EMOM">EMOM</option>
+            <option value="타바타">타바타</option>
+            <option value="For Time">For Time</option>
+        </select>
+        <select id="categorySelect">
+            <option value="">카테고리 선택</option>
+            <option value="역도">역도</option>
+            <option value="체조">체조</option>
+            <option value="유산소">유산소</option>
+            <option value="케틀벨">케틀벨</option>
+            <option value="박스,월볼">박스,월볼</option>
+            <option value="기능성">기능성</option>
+            <option value="코어">코어</option>
+            <option value="올림픽 역도 변형">올림픽 역도 변형</option>
+        </select>
+        <div id="selectedCategories"></div>
+        <input type="number" id="time" placeholder="운동 시간(분)">
+        <input type="number" id="rounds" placeholder="라운드 수 (선택사항)">
+        <button onclick="generateWOD()">WOD 생성</button>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
