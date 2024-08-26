@@ -13,7 +13,7 @@ let selectedCategories = [];
 
 document.getElementById('categorySelect').addEventListener('change', function() {
     const category = this.value;
-    if (category && !selectedCategories.includes(category)) {
+    if (category) {
         selectedCategories.push(category);
         updateSelectedCategories();
     }
@@ -40,6 +40,16 @@ function removeCategory(index) {
     updateSelectedCategories();
 }
 
+function toggleRoundsInput() {
+    const workoutType = document.getElementById('workoutType').value;
+    const roundsInput = document.getElementById('rounds');
+    if (workoutType === 'AMRAP') {
+        roundsInput.style.display = 'none';
+    } else {
+        roundsInput.style.display = 'block';
+    }
+}
+
 function generateWOD() {
     const workoutType = document.getElementById('workoutType').value;
     const time = parseInt(document.getElementById('time').value);
@@ -56,7 +66,7 @@ function generateWOD() {
     }
 
     let workout = `${workoutType} `;
-    if (rounds) {
+    if (rounds && workoutType !== 'AMRAP') {
         workout += `${rounds} Rounds `;
     }
     workout += `for ${time} minutes\n\n`;
@@ -67,8 +77,15 @@ function generateWOD() {
         workout += "8 라운드, 각 운동 20초 수행, 10초 휴식\n";
     }
 
+    let usedExercises = new Set();
     selectedCategories.forEach(category => {
-        const exercise = exercises[category][Math.floor(Math.random() * exercises[category].length)];
+        let availableExercises = exercises[category].filter(ex => !usedExercises.has(ex));
+        if (availableExercises.length === 0) {
+            availableExercises = exercises[category];
+        }
+        const exercise = availableExercises[Math.floor(Math.random() * availableExercises.length)];
+        usedExercises.add(exercise);
+
         if (workoutType === "For Time" || workoutType === "AMRAP") {
             const reps = Math.floor(Math.random() * 16) + 5; // 5-20 reps
             workout += `- ${reps} ${exercise}\n`;
@@ -79,6 +96,12 @@ function generateWOD() {
 
     document.getElementById('result').textContent = workout;
 }
+
+// 페이지 로드 시 AMRAP이 기본 선택되도록 설정
+window.onload = function() {
+    document.getElementById('workoutType').value = 'AMRAP';
+    toggleRoundsInput();
+};
 
 // Service Worker 등록
 if ('serviceWorker' in navigator) {
