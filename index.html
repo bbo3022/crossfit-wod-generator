@@ -17,7 +17,7 @@
             <option value="타바타">타바타</option>
             <option value="For Time">For Time</option>
         </select>
-        <select id="categorySelect">
+        <select id="categorySelect" onchange="showExercises()">
             <option value="">카테고리 선택</option>
             <option value="역도">역도</option>
             <option value="체조">체조</option>
@@ -27,13 +27,24 @@
             <option value="기능성">기능성</option>
             <option value="코어">코어</option>
             <option value="올림픽 역도 변형">올림픽 역도 변형</option>
+            <option value="네임드 와드">네임드 와드</option>
         </select>
-        <div id="selectedCategories"></div>
+        <div id="exerciseList"></div>
+        <div id="selectedExercises"></div>
         <input type="number" id="time" placeholder="운동 시간(분)">
         <input type="number" id="rounds" placeholder="라운드 수 (선택사항)">
-        <button onclick="generateWOD()">WOD 생성</button>
+        <button onclick="generateWOD()" id="generateWOD">WOD 생성</button>
+        <button onclick="generateAIWOD()">AI WOD 생성</button>
         <div id="result"></div>
     </div>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="index.html">WOD 생성기</a></li>
+                <li><a href="recommended.html">추천 WOD</a></li>
+            </ul>
+        </nav>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
