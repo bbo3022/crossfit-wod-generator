@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추천 WOD</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <h1>추천 WOD</h1>
+        <select id="fitnessLevel">
+            <option value="">피트니스 레벨 선택</option>
+            <option value="beginner">초보자</option>
+            <option value="intermediate">중급자</option>
+            <option value="advanced">고급자</option>
+        </select>
+        <button onclick="recommendWODs()">WOD 추천받기</button>
+        <div id="recommendations"></div>
+    </div>
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="index.html">WOD 생성기</a></li>
+                <li><a href="recommended.html">추천 WOD</a></li>
+            </ul>
+        </nav>
+    </footer>
+    <script src="recommended.js"></script>
+</body>
+</html>
