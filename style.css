@@ -1,23 +1,21 @@
-
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.container {
     background-color: white;
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-h1 {
-    text-align: center;
+h1, h3 {
     color: #333;
+    text-align: center;
 }
 
 select, input, button {
@@ -27,6 +25,7 @@ select, input, button {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    box-sizing: border-box;
 }
 
 button {
@@ -41,6 +40,34 @@ button:hover {
     background-color: #45a049;
 }
 
+#exerciseList button {
+    display: inline-block;
+    width: auto;
+    margin: 5px;
+    padding: 5px 10px;
+}
+
+#selectedExercises div {
+    background-color: #f9f9f9;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#selectedExercises input[type="number"] {
+    width: 60px;
+    margin: 0 10px;
+}
+
+#selectedExercises button {
+    width: auto;
+    padding: 5px 10px;
+    background-color: #f44336;
+}
+
 #result {
     margin-top: 20px;
     padding: 10px;
@@ -49,23 +76,32 @@ button:hover {
     border-radius: 4px;
     white-space: pre-wrap;
 }
-.category-tag {
-    display: inline-block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 20px;
+
+
+footer {
+    background-color: #f8f8f8;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
-.category-tag button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-left: 5px;
+footer nav ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-#selectedCategories {
-    margin: 10px 0;
+footer nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.container {
+    margin-bottom: 60px; /* 푸터 높이만큼 여백 추가 */
 }
